@@ -1,101 +1,204 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React from 'react';
+import Link from 'next/link';
+
+const weatherTopics = [
+  { 
+    name: 'Jet Streams', 
+    path: '/topics/jet-streams',
+    description: 'Fast flowing, narrow air currents in the atmosphere that influence weather patterns',
+    icon: '💨'
+  },
+  { 
+    name: 'Rossby Waves', 
+    path: '/topics/rossby-waves',
+    description: 'Giant meanders in high-altitude winds that have a major influence on weather',
+    icon: '〰️'
+  },
+  { 
+    name: 'Atmospheric Pressure', 
+    path: '/topics/atmospheric-pressure',
+    description: 'The force exerted by the weight of air above, creating high and low pressure systems',
+    icon: '🔄'
+  },
+  { 
+    name: 'Cloud Formation', 
+    path: '/topics/cloud-formation',
+    description: 'The process by which water vapor condenses into visible cloud particles',
+    icon: '☁️'
+  },
+  { 
+    name: 'Storm Systems', 
+    path: '/topics/storm-systems',
+    description: 'Complex weather patterns involving thunderstorms, cyclones, and frontal systems',
+    icon: '⛈️'
+  },
+];
+
+const HomePage = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="home-container">
+      <div className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title">Welcome to WeatherWings</h1>
+          <p className="hero-subtitle">Learn about meteorology with the help of friendly, knowledgeable ducks</p>
+          
+          <div className="duck-intro">
+            <div className="duck-avatar-large">🦆</div>
+            <div className="duck-speech">
+              <p>Hi there! I&apos;m Harold, your guide to understanding weather patterns. My flock and I have been studying atmospheric science for years, and we&apos;re excited to share our knowledge with you!</p>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      
+      <div className="topics-grid">
+        <h2 className="section-title">Weather Topics</h2>
+        <div className="topics-container">
+          {weatherTopics.map((topic) => (
+            <Link key={topic.path} href={topic.path} className="topic-card">
+              <div className="topic-icon">{topic.icon}</div>
+              <h3 className="topic-title">{topic.name}</h3>
+              <p className="topic-description">{topic.description}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+      
+      <style jsx>{`
+        .home-container {
+          animation: fadeIn 0.5s ease-in;
+        }
+        
+        .hero-section {
+          background-color: white;
+          border-radius: var(--border-radius);
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-title {
+          color: var(--water-blue);
+          font-size: 2.5rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        .hero-subtitle {
+          color: var(--storm-gray);
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+        }
+        
+        .duck-intro {
+          display: flex;
+          align-items: center;
+          background-color: #f8f9fa;
+          border-radius: var(--border-radius);
+          padding: 1.5rem;
+          margin-top: 1.5rem;
+        }
+        
+        .duck-avatar-large {
+          font-size: 4rem;
+          margin-right: 1.5rem;
+        }
+        
+        .duck-speech {
+          position: relative;
+          background-color: white;
+          border-radius: var(--border-radius);
+          padding: 1rem;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .duck-speech:before {
+          content: '';
+          position: absolute;
+          left: -10px;
+          top: 20px;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-right: 10px solid white;
+        }
+        
+        .section-title {
+          color: var(--water-blue);
+          margin-bottom: 1.5rem;
+        }
+        
+        .topics-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 1.5rem;
+        }
+        
+        .topic-card {
+          display: block;
+          background-color: white;
+          border-radius: var(--border-radius);
+          padding: 1.5rem;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          transition: all 0.3s ease;
+          text-decoration: none;
+          color: inherit;
+        }
+        
+        .topic-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+        }
+        
+        .topic-icon {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .topic-title {
+          color: var(--water-blue);
+          margin-bottom: 0.5rem;
+        }
+        
+        .topic-description {
+          color: var(--storm-gray);
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+          .hero-title {
+            font-size: 2rem;
+          }
+          
+          .duck-intro {
+            flex-direction: column;
+            text-align: center;
+          }
+          
+          .duck-avatar-large {
+            margin-right: 0;
+            margin-bottom: 1rem;
+          }
+          
+          .duck-speech:before {
+            left: 50%;
+            top: -10px;
+            margin-left: -10px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white;
+            border-top: none;
+          }
+        }
+      `}</style>
     </div>
   );
-}
+};
+
+export default HomePage;
