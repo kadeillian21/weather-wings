@@ -5,7 +5,7 @@
   --water-blue: #1e3a8a;
   --storm-gray: #343a40;
   --leaf-green: #2E8B57;
-
+  
   --primary-font: 'Inter', system-ui, sans-serif;
   --border-radius: 8px;
 }
@@ -67,12 +67,25 @@ body {
   gap: 1.5rem;
 }
 
+.navbar-topic-container {
+  position: relative;
+}
+
 .navbar-topic {
   color: white;
   text-decoration: none;
   padding: 0.5rem 0;
   position: relative;
   transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-indicator {
+  font-size: 0.7rem;
+  margin-left: 0.25rem;
 }
 
 .navbar-topic::after {
@@ -89,6 +102,34 @@ body {
 .navbar-topic:hover::after,
 .navbar-topic.active::after {
   width: 100%;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border-radius: var(--border-radius);
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.dropdown-item {
+  display: block;
+  color: var(--storm-gray);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  background-color: #f0f4f8;
+  color: var(--water-blue);
 }
 
 .duck-mode-toggle {
@@ -159,8 +200,7 @@ body {
   gap: 1.5rem;
 }
 
-.notes-view,
-.visual-view {
+.notes-view, .visual-view {
   padding: 1.5rem;
 }
 
@@ -168,8 +208,8 @@ body {
   border-right: 1px solid #e9ecef;
 }
 
-.markdown-content h1,
-.markdown-content h2,
+.markdown-content h1, 
+.markdown-content h2, 
 .markdown-content h3 {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
@@ -181,7 +221,7 @@ body {
   line-height: 1.6;
 }
 
-.markdown-content ul,
+.markdown-content ul, 
 .markdown-content ol {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
@@ -235,17 +275,17 @@ body {
     flex-direction: column;
     gap: 1rem;
   }
-
+  
   .navbar-topics {
     overflow-x: auto;
     width: 100%;
     justify-content: flex-start;
   }
-
+  
   .split-view {
     grid-template-columns: 1fr;
   }
-
+  
   .notes-view {
     border-right: none;
     border-bottom: 1px solid #e9ecef;

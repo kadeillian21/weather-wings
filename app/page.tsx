@@ -5,34 +5,22 @@ import Link from 'next/link';
 
 const weatherTopics = [
   { 
+    name: 'Atmospheric Basics', 
+    path: '/topics/atmospheric-basics',
+    description: 'The fundamental principles that govern our atmosphere, from pressure systems to temperature patterns',
+    icon: '🌍'
+  },
+  { 
     name: 'Jet Streams', 
     path: '/topics/jet-streams',
-    description: 'Fast flowing, narrow air currents in the atmosphere that influence weather patterns',
+    description: 'Fast flowing, narrow air currents in the atmosphere that influence global weather patterns',
     icon: '💨'
   },
   { 
-    name: 'Rossby Waves', 
-    path: '/topics/rossby-waves',
-    description: 'Giant meanders in high-altitude winds that have a major influence on weather',
-    icon: '〰️'
-  },
-  { 
-    name: 'Atmospheric Pressure', 
-    path: '/topics/atmospheric-pressure',
-    description: 'The force exerted by the weight of air above, creating high and low pressure systems',
-    icon: '🔄'
-  },
-  { 
-    name: 'Cloud Formation', 
-    path: '/topics/cloud-formation',
-    description: 'The process by which water vapor condenses into visible cloud particles',
-    icon: '☁️'
-  },
-  { 
-    name: 'Storm Systems', 
-    path: '/topics/storm-systems',
-    description: 'Complex weather patterns involving thunderstorms, cyclones, and frontal systems',
-    icon: '⛈️'
+    name: 'Moisture Topics', 
+    path: '/topics/moisture',
+    description: 'Everything about water in the atmosphere - from humidity and clouds to precipitation',
+    icon: '💧'
   },
 ];
 
