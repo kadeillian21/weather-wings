@@ -1,15 +1,14 @@
-/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-export const JetStreamPolarNotes = () => {
+const JetStreamPolarNotes = () => {
   return (
     <div className="notes-content">
       <h2>The Polar Jet Stream</h2>
       <p>
-        The Polar Jet Stream is the stronger and more significant of Earth's two major jet streams. 
+        The Polar Jet Stream is the stronger and more significant of Earth's two major jet streams.
         It forms at the boundary between cold polar air and warmer temperate air in both hemispheres.
       </p>
-      
+
       <div className="notes-section">
         <h3>Defining Characteristics</h3>
         <ul>
@@ -19,7 +18,7 @@ export const JetStreamPolarNotes = () => {
           <li><strong>Speed</strong>: Average speeds of 110-185 km/h, but can exceed 400 km/h in winter</li>
         </ul>
       </div>
-      
+
       <div className="notes-section">
         <h3>Weather Influence</h3>
         <p>The Polar Jet Stream significantly impacts weather by:</p>
@@ -30,11 +29,11 @@ export const JetStreamPolarNotes = () => {
           <li>Influencing the development and movement of weather fronts</li>
         </ul>
       </div>
-      
+
       <div className="duck-quote">
         <p>"The Polar Jet is like the bouncer of the atmosphere - keeping the rowdy cold air up north where it belongs. When it gets wobbly, that's when the weather party gets wild!" - Harold the Duck</p>
       </div>
-      
+
       <div className="notes-section">
         <h3>Climate Change Impact</h3>
         <p>
@@ -50,3 +49,5 @@ export const JetStreamPolarNotes = () => {
     </div>
   );
 };
+
+export default JetStreamPolarNotes;

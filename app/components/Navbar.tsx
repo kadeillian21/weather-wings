@@ -6,17 +6,13 @@ import { usePathname } from 'next/navigation';
 
 // Define topic structure with nested subtopics
 const weatherTopics = [
-  { 
-    name: 'Atmospheric Basics', 
-    path: '/topics/atmospheric-basics',
-    dropdown: [
-      { name: 'Air Pressure', path: '/topics/atmospheric-basics/air-pressure' },
-      { name: 'Temperature Gradients', path: '/topics/atmospheric-basics/temperature-gradients' },
-      { name: 'Atmospheric Layers', path: '/topics/atmospheric-basics/atmospheric-layers' }
-    ]
+  {
+    name: 'Atmospheric Fundamentals',
+    path: '/topics/atmospheric-fundamentals',
+    dropdown: [] // Empty array for no dropdown items
   },
-  { 
-    name: 'Jet Streams', 
+  {
+    name: 'Jet Streams',
     path: '/topics/jet-streams',
     dropdown: [
       { name: 'Fundamentals', path: '/topics/jet-streams/fundamentals' },
@@ -28,17 +24,17 @@ const weatherTopics = [
       { name: 'Real-World Applications', path: '/topics/jet-streams/applications' }
     ]
   },
-  { 
-    name: 'Moisture', 
+  {
+    name: 'Moisture',
     path: '/topics/moisture',
-    dropdown: []
+    dropdown: [] // Empty array for no dropdown items
   }
 ];
 
 const Navbar = () => {
   const pathname = usePathname();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  
+
   const toggleDropdown = (topicName: string) => {
     if (activeDropdown === topicName) {
       setActiveDropdown(null);
@@ -46,7 +42,7 @@ const Navbar = () => {
       setActiveDropdown(topicName);
     }
   };
-  
+
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -55,35 +51,48 @@ const Navbar = () => {
           <span className="logo-duck">🦆</span>
         </Link>
       </div>
-      
+
       <div className="navbar-topics">
         {weatherTopics.map((topic) => (
           <div key={topic.path} className="navbar-topic-container">
-            <div 
-              className={`navbar-topic ${pathname.startsWith(topic.path) ? 'active' : ''}`}
-              onClick={() => toggleDropdown(topic.name)}
-            >
-              {topic.name}
-              <span className="dropdown-indicator">{activeDropdown === topic.name ? '▲' : '▼'}</span>
-            </div>
-            
-            {activeDropdown === topic.name && (
-              <div className="dropdown-menu">
-                {topic.dropdown.map(subtopic => (
-                  <Link 
-                    key={subtopic.path} 
-                    href={subtopic.path}
-                    className={`dropdown-item ${pathname === subtopic.path ? 'active' : ''}`}
-                  >
-                    {subtopic.name}
-                  </Link>
-                ))}
-              </div>
+            {topic.dropdown && topic.dropdown.length > 0 ? (
+              // Topic with dropdown
+              <>
+                <div
+                  className={`navbar-topic ${pathname.startsWith(topic.path) ? 'active' : ''}`}
+                  onClick={() => toggleDropdown(topic.name)}
+                >
+                  {topic.name}
+                  <span className="dropdown-indicator">{activeDropdown === topic.name ? '▲' : '▼'}</span>
+                </div>
+
+                {activeDropdown === topic.name && (
+                  <div className="dropdown-menu">
+                    {topic.dropdown.map(subtopic => (
+                      <Link
+                        key={subtopic.path}
+                        href={subtopic.path}
+                        className={`dropdown-item ${pathname === subtopic.path ? 'active' : ''}`}
+                      >
+                        {subtopic.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              // Simple topic without dropdown
+              <Link 
+                href={topic.path}
+                className={`navbar-topic ${pathname === topic.path ? 'active' : ''}`}
+              >
+                {topic.name}
+              </Link>
             )}
           </div>
         ))}
       </div>
-      
+
       <div className="navbar-actions">
         <button className="duck-mode-toggle">
           Ask a Duck

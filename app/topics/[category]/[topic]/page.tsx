@@ -5,15 +5,15 @@ import { useParams } from 'next/navigation';
 
 // Import visualization components for different topics
 // These will be created by the duck brethren
-import { JetStreamFundamentalsVisual } from '../../../components/visualizations/jetStreams/JetStreamFundamentalsVisual';
-import { JetStreamPolarVisual } from '../../../components/visualizations/jetStreams/JetStreamPolarVisual';
-import { ComingSoonVisual } from '../../../components/visualizations/ComingSoonVisual';
+import JetStreamFundamentalsVisual from '../../../components/visualizations/jetStreams/JetStreamFundamentalsVisual';
+import JetStreamPolarVisual from '../../../components/visualizations/jetStreams/JetStreamPolarVisual';
+import ComingSoonVisual from '../../../components/visualizations/ComingSoonVisual';
 
 // Import notes components for different topics
 // These will be created by the duck brethren
-import { JetStreamFundamentalsNotes } from '../../../components/notes/jetStreams/JetStreamFundamentalsNotes';
-import { JetStreamPolarNotes } from '../../../components/notes/jetStreams/JetStreamPolarNotes';
-import { DefaultNotes } from '../../../components/notes/DefaultNotes';
+import JetStreamFundamentalsNotes from '../../../components/notes/jetStreams/JetStreamFundamentalsNotes';
+import JetStreamPolarNotes from '../../../components/notes/jetStreams/JetStreamPolarNotes';
+import DefaultNotes from '../../../components/notes/DefaultNotes';
 
 // Function to get the correct components based on the URL path
 const getTopicComponents = (category?: string, topic?: string) => {

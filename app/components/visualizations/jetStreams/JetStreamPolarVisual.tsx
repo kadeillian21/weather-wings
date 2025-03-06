@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const JetStreamPolarVisual = () => {
+const JetStreamPolarVisual = () => {
   const [season, setSeason] = useState('winter');
   
   return (
@@ -94,3 +94,5 @@ export const JetStreamPolarVisual = () => {
     </div>
   );
 };
+
+export default JetStreamPolarVisual;

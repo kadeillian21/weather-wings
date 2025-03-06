@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const JetStreamFundamentalsVisual = () => {
+const JetStreamFundamentalsVisual = () => {
   return (
     <div className="duck-figure">
       <svg width="100%" height="300" viewBox="0 0 600 300">
@@ -37,3 +37,5 @@ export const JetStreamFundamentalsVisual = () => {
     </div>
   );
 };
+
+export default JetStreamFundamentalsVisual;

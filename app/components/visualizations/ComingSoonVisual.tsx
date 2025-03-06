@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ComingSoonVisual = () => {
+const ComingSoonVisual = () => {
   return (
     <div className="duck-figure">
       <div style={{ textAlign: 'center', padding: '2rem' }}>
@@ -12,3 +12,5 @@ export const ComingSoonVisual = () => {
     </div>
   );
 };
+
+export default ComingSoonVisual;
