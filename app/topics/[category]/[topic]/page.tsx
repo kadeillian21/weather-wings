@@ -1,19 +1,14 @@
 'use client';
-
 import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
-
-// Import visualization components for different topics
-// These will be created by the duck brethren
 import JetStreamFundamentalsVisual from '../../../components/visualizations/jetStreams/JetStreamFundamentalsVisual';
 import JetStreamPolarVisual from '../../../components/visualizations/jetStreams/JetStreamPolarVisual';
 import ComingSoonVisual from '../../../components/visualizations/ComingSoonVisual';
-
-// Import notes components for different topics
-// These will be created by the duck brethren
 import JetStreamFundamentalsNotes from '../../../components/notes/jetStreams/JetStreamFundamentalsNotes';
 import JetStreamPolarNotes from '../../../components/notes/jetStreams/JetStreamPolarNotes';
 import DefaultNotes from '../../../components/notes/DefaultNotes';
+import InstabilityFundamentalsVisual from '@/app/components/visualizations/instability/InstabilityFundamentalsVisual';
+import InstabilityFundamentalsNotes from '@/app/components/notes/instability/InstabilityFundamentalsNotes';
 
 // Function to get the correct components based on the URL path
 const getTopicComponents = (category?: string, topic?: string) => {
@@ -24,6 +19,34 @@ const getTopicComponents = (category?: string, topic?: string) => {
         title: 'Jet Stream Fundamentals',
         NotesComponent: JetStreamFundamentalsNotes,
         VisualComponent: JetStreamFundamentalsVisual
+      };
+    }
+    if (topic === 'polar-jet') {
+      return {
+        title: 'The Polar Jet Stream',
+        NotesComponent: JetStreamPolarNotes,
+        VisualComponent: JetStreamPolarVisual
+      };
+    }
+    // Add more specific jet stream topics as they are created
+
+    // Default for jet streams main page or unimplemented subtopics
+    return {
+      title: topic ?
+        topic.charAt(0).toUpperCase() + topic.slice(1).replace(/-/g, ' ') :
+        'Jet Streams Overview',
+      NotesComponent: DefaultNotes,
+      VisualComponent: ComingSoonVisual
+    };
+  }
+
+  //Handling Instability Category
+  if (category === 'instability') {
+    if (topic === 'instability-fundamentals') {
+      return {
+        title: 'Instability Fundamentals',
+        NotesComponent: InstabilityFundamentalsNotes,
+        VisualComponent: InstabilityFundamentalsVisual
       };
     }
     if (topic === 'polar-jet') {

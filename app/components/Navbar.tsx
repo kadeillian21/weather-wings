@@ -25,6 +25,13 @@ const weatherTopics = [
     ]
   },
   {
+    name: 'Instability',
+    path: '/topics/instability',
+    dropdown: [
+      { name: 'Instability Fundamentals', path: '/topics/instability/instability-fundamentals' },
+    ]
+  },
+  {
     name: 'Moisture',
     path: '/topics/moisture',
     dropdown: [] // Empty array for no dropdown items
